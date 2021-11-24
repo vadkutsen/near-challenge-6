@@ -217,7 +217,7 @@ aside footer *:last-child {
 
 .message-area {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=/global.65e27967.css.map */

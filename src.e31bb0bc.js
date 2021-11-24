@@ -32372,7 +32372,7 @@ function TransferForm(_ref) {
     defaultValue: '0',
     id: "amount",
     max: (0, _big.default)(balance).div(10 ** 24),
-    min: "0",
+    min: "1",
     step: "1",
     type: "number"
   }), /*#__PURE__*/_react.default.createElement("label", {
@@ -32658,14 +32658,14 @@ const App = _ref => {
     className: "message-area"
   }, /*#__PURE__*/_react.default.createElement("div", {
     style: {
-      flex: 5
+      flex: 1
     }
   }, /*#__PURE__*/_react.default.createElement(_MintForm.default, {
     onMintSubmit: onMintSubmit,
     currentUser: currentUser
   })), /*#__PURE__*/_react.default.createElement("div", {
     style: {
-      flex: 5
+      flex: 1
     }
   }, /*#__PURE__*/_react.default.createElement(_TransferForm.default, {
     onTransferSubmit: onTransferSubmit,
@@ -49330,7 +49330,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53844" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53923" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
