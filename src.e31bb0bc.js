@@ -32373,7 +32373,7 @@ function TransferForm(_ref) {
     id: "amount",
     max: (0, _big.default)(balance).div(10 ** 24),
     min: "0",
-    step: "0.01",
+    step: "1",
     type: "number"
   }), /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "amount"
@@ -32539,10 +32539,6 @@ const App = _ref => {
     wallet
   } = _ref;
   const [balance, setBalance] = (0, _react.useState)(0);
-  const [totalSupply, setTotalSupply] = (0, _react.useState)(0); // const [receiver, setReceiver] = useState("")
-
-  const [registered, setRegistered] = (0, _react.useState)(false);
-  const [receiverRegistered, setReceiverRegistered] = (0, _react.useState)(false);
   const [showNotification, setShowNotification] = (0, _react.useState)(false);
   (0, _react.useEffect)(() => {
     getBalance();
@@ -32560,13 +32556,18 @@ const App = _ref => {
     contract.storage_deposit({
       account_id: currentUser.accountId
     }, BOATLOAD_OF_GAS, (0, _big.default)(1).times(10 ** 24).toFixed());
-  };
+  }; // const registerReceiver = () => {
+  //   contract.storage_deposit(
+  //     {
+  //       account_id: receiver.value,
+  //     },
+  //     BOATLOAD_OF_GAS,
+  //     Big(1)
+  //       .times(10 ** 24)
+  //       .toFixed()
+  //   );
+  // };
 
-  const registerReceiver = () => {
-    contract.storage_deposit({
-      account_id: receiver.value
-    }, BOATLOAD_OF_GAS, (0, _big.default)(1).times(10 ** 24).toFixed());
-  };
 
   const onMintSubmit = e => {
     e.preventDefault();
@@ -32626,7 +32627,7 @@ const App = _ref => {
 
   return /*#__PURE__*/_react.default.createElement("main", null, currentUser ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "account"
-  }, /*#__PURE__*/_react.default.createElement("div", null, "Available balances: ", /*#__PURE__*/_react.default.createElement("span", null, balance / 1000000000000000000000000, " BRD,"), " ", /*#__PURE__*/_react.default.createElement("span", null, currentUser.balance / 1000000000000000000000000, " NEAR"), " ", /*#__PURE__*/_react.default.createElement("span", null, currentUser.accountId))), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, "Hi ", /*#__PURE__*/_react.default.createElement("span", null, currentUser.accountId, "!"), " Your balance: ", /*#__PURE__*/_react.default.createElement("span", null, balance / 1000000000000000000000000, " BRD,"), " ", /*#__PURE__*/_react.default.createElement("span", null, (currentUser.balance / 1000000000000000000000000).toFixed(4), " NEAR"))), /*#__PURE__*/_react.default.createElement("button", {
     className: "signout",
     onClick: signOut
   }, "Log out")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", {
@@ -32650,7 +32651,7 @@ const App = _ref => {
   }), " is now avilable for minting and transfering!"))) : /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("button", {
     className: "signin",
     onClick: signIn
-  }, "Log in")), currentUser ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Just a few easy steps to enjoy fun BRD token:"), /*#__PURE__*/_react.default.createElement("p", null, "1. Register first if you did not use BRD before", ' ', /*#__PURE__*/_react.default.createElement("button", {
+  }, "Log in")), currentUser ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("p", null, "Just a few easy steps to get BRD:"), /*#__PURE__*/_react.default.createElement("p", null, "1. Register first if you did not use BRD before", ' ', /*#__PURE__*/_react.default.createElement("button", {
     className: "register",
     onClick: register
   }, "Register")), /*#__PURE__*/_react.default.createElement("p", null, "2. Mint and anjoy or Transfer to friends")), /*#__PURE__*/_react.default.createElement("div", {
@@ -32706,12 +32707,12 @@ function getConfig(env) {
     case 'production':
     case 'mainnet':
       return {
-        networkId: 'mainnet',
-        nodeUrl: 'https://rpc.mainnet.near.org',
+        networkId: 'testnet',
+        nodeUrl: 'https://rpc.testnet.near.org',
         contractName: CONTRACT_NAME,
-        walletUrl: 'https://wallet.near.org',
-        helperUrl: 'https://helper.mainnet.near.org',
-        explorerUrl: 'https://explorer.mainnet.near.org'
+        walletUrl: 'https://wallet.testnet.near.org',
+        helperUrl: 'https://helper.testnet.near.org',
+        explorerUrl: 'https://explorer.testnet.near.org'
       };
 
     case 'development':
@@ -49329,7 +49330,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51145" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53844" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
