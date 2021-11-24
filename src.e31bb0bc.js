@@ -32459,15 +32459,23 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // import banner from '../assets/big-spaceman.png';
 function SignIn() {
-  return /*#__PURE__*/_react.default.createElement("div", {
+  return /*#__PURE__*/_react.default.createElement(_react.default.Fragment, null, /*#__PURE__*/_react.default.createElement("h1", {
+    style: {
+      textAlign: 'center'
+    }
+  }, "Nearvember challenge 6."), /*#__PURE__*/_react.default.createElement("h2", {
+    style: {
+      textAlign: 'center'
+    }
+  }, "Welcome to Beard Token"), /*#__PURE__*/_react.default.createElement("div", {
     className: "image-container"
   }, /*#__PURE__*/_react.default.createElement("img", {
     src: _beard.default,
     style: {
-      width: '50%'
+      width: '40%'
     },
     alt: "Near to the moon"
-  }));
+  })));
 }
 },{"react":"../node_modules/react/index.js","../assets/beard.svg":"assets/beard.svg"}],"components/Notification.jsx":[function(require,module,exports) {
 "use strict";
@@ -32627,7 +32635,7 @@ const App = _ref => {
 
   return /*#__PURE__*/_react.default.createElement("main", null, currentUser ? /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("header", null, /*#__PURE__*/_react.default.createElement("div", {
     className: "account"
-  }, /*#__PURE__*/_react.default.createElement("div", null, "Hi ", /*#__PURE__*/_react.default.createElement("span", null, currentUser.accountId, "!"), " Your balance: ", /*#__PURE__*/_react.default.createElement("span", null, balance / 1000000000000000000000000, " BRD,"), " ", /*#__PURE__*/_react.default.createElement("span", null, (currentUser.balance / 1000000000000000000000000).toFixed(4), " NEAR"))), /*#__PURE__*/_react.default.createElement("button", {
+  }, /*#__PURE__*/_react.default.createElement("div", null, "Hi ", /*#__PURE__*/_react.default.createElement("span", null, currentUser.accountId, "!"), " Your balance: ", /*#__PURE__*/_react.default.createElement("span", null, (balance / 1000000000000000000000000).toFixed(4), " BRD,"), " ", /*#__PURE__*/_react.default.createElement("span", null, (currentUser.balance / 1000000000000000000000000).toFixed(4), " NEAR"))), /*#__PURE__*/_react.default.createElement("button", {
     className: "signout",
     onClick: signOut
   }, "Log out")), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", {
@@ -49330,7 +49338,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53923" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54200" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
