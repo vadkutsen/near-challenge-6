@@ -6,7 +6,7 @@ export default function TransferForm({ onTransferSubmit, balance }) {
   return (
     <form onSubmit={onTransferSubmit}>
         <fieldset id="fieldset">
-          <p>Transfer</p>
+          <p>Transfer <small><i>(Receiver account must be registered)</i></small></p>
           <p className="highlight">
             <label htmlFor="receiverId">Receiver:</label>
             <input

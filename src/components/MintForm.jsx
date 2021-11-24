@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Big from 'big.js';
 
-export default function MintForm({ onMintSubmit, currentUser }) {
+export default function MintForm({ onMintSubmit }) {
   return (
     <form onSubmit={onMintSubmit}>
         <fieldset id="fieldset">
@@ -14,7 +13,6 @@ export default function MintForm({ onMintSubmit, currentUser }) {
               defaultValue={'1000'}
               id="amount"
               max={1000}
-              // max={Big(currentUser.balance).div(10 ** 24)}
               min="0"
               step="1"
               type="number"
@@ -31,8 +29,4 @@ export default function MintForm({ onMintSubmit, currentUser }) {
 
 MintForm.propTypes = {
   onMintSubmit: PropTypes.func.isRequired,
-  currentUser: PropTypes.shape({
-    accountId: PropTypes.string.isRequired,
-    balance: PropTypes.string.isRequired,
-  })
 };
