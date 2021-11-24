@@ -156,10 +156,10 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
                 </form> */}
             </div>
             <div className="message-area">
-            <div style={{ flex: 5 }}>
+            <div style={{ flex: 1 }}>
               <MintForm onMintSubmit={onMintSubmit} currentUser={currentUser} />
             </div>
-            <div style={{ flex: 5 }}>
+            <div style={{ flex: 1 }}>
               <TransferForm onTransferSubmit={onTransferSubmit} currentUser={currentUser} balance={balance} />
             </div>
           </div>

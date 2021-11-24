@@ -23,7 +23,7 @@ export default function TransferForm({ onTransferSubmit, balance }) {
               defaultValue={'0'}
               id="amount"
               max={Big(balance).div(10 ** 24)}
-              min="0"
+              min="1"
               step="1"
               type="number"
             />
