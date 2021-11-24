@@ -113,7 +113,7 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
       <div>
         <header>
           <div className="account">
-            <div>Hi <span>{currentUser.accountId}!</span> Your balance: <span>{balance/1000000000000000000000000} BRD,</span> <span>{(currentUser.balance/1000000000000000000000000).toFixed(4)} NEAR</span></div>
+            <div>Hi <span>{currentUser.accountId}!</span> Your balance: <span>{(balance/1000000000000000000000000).toFixed(4)} BRD,</span> <span>{(currentUser.balance/1000000000000000000000000).toFixed(4)} NEAR</span></div>
           </div>
           <button className="signout" onClick={signOut}>Log out</button>
         </header>
