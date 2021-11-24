@@ -32354,7 +32354,7 @@ function TransferForm(_ref) {
     onSubmit: onTransferSubmit
   }, /*#__PURE__*/_react.default.createElement("fieldset", {
     id: "fieldset"
-  }, /*#__PURE__*/_react.default.createElement("p", null, "Transfer"), /*#__PURE__*/_react.default.createElement("p", {
+  }, /*#__PURE__*/_react.default.createElement("p", null, "Transfer ", /*#__PURE__*/_react.default.createElement("small", null, /*#__PURE__*/_react.default.createElement("i", null, "(Receiver account must be registered)"))), /*#__PURE__*/_react.default.createElement("p", {
     className: "highlight"
   }, /*#__PURE__*/_react.default.createElement("label", {
     htmlFor: "receiverId"
@@ -32401,14 +32401,11 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _big = _interopRequireDefault(require("big.js"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function MintForm(_ref) {
   let {
-    onMintSubmit,
-    currentUser
+    onMintSubmit
   } = _ref;
   return /*#__PURE__*/_react.default.createElement("form", {
     onSubmit: onMintSubmit
@@ -32422,8 +32419,7 @@ function MintForm(_ref) {
     autoComplete: "off",
     defaultValue: '1000',
     id: "amount",
-    max: 1000 // max={Big(currentUser.balance).div(10 ** 24)}
-    ,
+    max: 1000,
     min: "0",
     step: "1",
     type: "number"
@@ -32435,13 +32431,9 @@ function MintForm(_ref) {
 }
 
 MintForm.propTypes = {
-  onMintSubmit: _propTypes.default.func.isRequired,
-  currentUser: _propTypes.default.shape({
-    accountId: _propTypes.default.string.isRequired,
-    balance: _propTypes.default.string.isRequired
-  })
+  onMintSubmit: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","big.js":"../node_modules/big.js/big.js"}],"assets/beard.svg":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"assets/beard.svg":[function(require,module,exports) {
 module.exports = "/beard.c49b1707.svg";
 },{}],"components/SignIn.jsx":[function(require,module,exports) {
 "use strict";
@@ -32563,18 +32555,19 @@ const App = _ref => {
   const register = () => {
     contract.storage_deposit({
       account_id: currentUser.accountId
-    }, BOATLOAD_OF_GAS, (0, _big.default)(1).times(10 ** 24).toFixed());
-  }; // const registerReceiver = () => {
+    }, BOATLOAD_OF_GAS, (0, _big.default)(0.01).times(10 ** 24).toFixed());
+  }; // const registerReceiver = (e) => {
+  //   const { receiver } = e.target.elements;
   //   contract.storage_deposit(
   //     {
   //       account_id: receiver.value,
   //     },
   //     BOATLOAD_OF_GAS,
-  //     Big(1)
+  //     Big(0.01)
   //       .times(10 ** 24)
   //       .toFixed()
-  //   );
-  // };
+  //   )
+  // }
 
 
   const onMintSubmit = e => {
@@ -32586,7 +32579,7 @@ const App = _ref => {
     contract.ft_mint({
       receiver_id: currentUser.accountId,
       amount: amount.value
-    }, BOATLOAD_OF_GAS, (0, _big.default)(1).times(10 ** 24).toFixed()).then(() => {
+    }, BOATLOAD_OF_GAS, (0, _big.default)(0.01).times(10 ** 24).toFixed()).then(() => {
       getBalance();
       amount.value = 0;
       fieldset.disabled = false;
@@ -49338,7 +49331,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54200" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58358" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
