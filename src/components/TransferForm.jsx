@@ -24,7 +24,7 @@ export default function TransferForm({ onTransferSubmit, balance }) {
               id="amount"
               max={Big(balance).div(10 ** 24)}
               min="0"
-              step="0.01"
+              step="1"
               type="number"
             />
             <label htmlFor="amount">BRD</label>
