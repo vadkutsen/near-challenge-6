@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Big from 'big.js';
 import TransferForm from './components/TransferForm';
 import MintForm from './components/MintForm';
+import RegisterReceiverForm from './components/RegisterReceiverForm';
 import SignIn from './components/SignIn';
 import Notification from './components/Notification';
 import spaceman from './assets/beard-white.svg';
@@ -29,24 +30,27 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
         account_id: currentUser.accountId,
       },
       BOATLOAD_OF_GAS,
-      Big(0.01)
+      Big(0.00125)
         .times(10 ** 24)
         .toFixed()
     )
   }
 
-  // const registerReceiver = (e) => {
-  //   const { receiver } = e.target.elements;
-  //   contract.storage_deposit(
-  //     {
-  //       account_id: receiver.value,
-  //     },
-  //     BOATLOAD_OF_GAS,
-  //     Big(0.01)
-  //       .times(10 ** 24)
-  //       .toFixed()
-  //   )
-  // }
+  const registerReceiver = (e) => {
+    e.preventDefault();
+    const { receiver } = e.target.elements;
+    contract.storage_deposit(
+      {
+        account_id: receiver.value,
+      },
+      BOATLOAD_OF_GAS,
+      Big(0.00125)
+        .times(10 ** 24)
+        .toFixed()
+    ).then(() => {
+      getBalance()
+    })
+  }
 
   const onMintSubmit = (e) => {
     e.preventDefault();
@@ -137,24 +141,11 @@ const App = ({ contract, currentUser, nearConfig, wallet }) => {
                 1. Register first if you did not use BRD before{' '}
                 <button className="register" onClick={register}>Register</button>
               </p>
-              {/* <p>
+              <p>
                 2. Register the receiver to ensure they can recieve transferred tokens
               </p>
-              <form onSubmit={registerReceiver}>
-                <fieldset id="fieldset">
-                  <span className="highlight">
-                    <label htmlFor="receiver">Receiver account:</label>
-                    <input
-                      autoComplete="off"
-                      autoFocus
-                      id="receiver"
-                      required
-                    />
-                    <button type="submit">Register</button>
-                  </span>
-                </fieldset>
-              </form> */}
-                <p>2. Mint and anjoy or Transfer to friends</p>
+              <RegisterReceiverForm onSubmit={registerReceiver} />
+                <p>3. Mint and anjoy or Transfer to your friends</p>
             </div>
             <div className="message-area">
             <div style={{ flex: 1 }}>
